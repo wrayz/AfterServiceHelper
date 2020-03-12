@@ -39,3 +39,12 @@
 /Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/obj/Debug/netcoreapp3.1/AfterServiceHelper.csproj.CopyComplete
 /Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/obj/Debug/netcoreapp3.1/AfterServiceHelper.dll
 /Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/obj/Debug/netcoreapp3.1/AfterServiceHelper.pdb
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/EPPlus.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/System.Drawing.Common.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/System.Security.Cryptography.Pkcs.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/System.Xml.XPath.XmlDocument.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll
+/Users/ray/Documents/99_Techman/AFExcelHelper/AfterServiceHelper/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp3.0/System.Security.Cryptography.Pkcs.dll

@@ -36,6 +36,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[3.1.0, )"
