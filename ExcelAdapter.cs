@@ -15,17 +15,23 @@ namespace AfterServiceHelper
         public ExcelAdapter(ILogger<ExcelAdapter> logger)
         {
             _logger = logger;
-            System.Console.WriteLine("HIHI");
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            System.Console.WriteLine("Start");
-            var fi = new FileInfo(@"./document/Bugzilla issue20200217.xlsx");
-            using(var p = new ExcelPackage(fi))
+            var file = new FileInfo(@"./document/Bugzilla issue20200217.xlsx");
+            using(var p = new ExcelPackage(file))
             {
-                var ws = p.Workbook.Worksheets["出貨日期"];
-                Console.WriteLine($"Cell A1 Value: {ws.Cells.Columns}");
+                var workSheet = p.Workbook.Worksheets["出貨日期"];
+                for (var columnIndex = 1; columnIndex <= workSheet.Dimension.Columns; columnIndex++)
+                {
+                    System.Console.WriteLine($"{workSheet.Cells[1, columnIndex].Value}");
+                    // for (var rowIndex = 2; rowIndex <= workSheet.Dimension.Rows; rowIndex++)
+                    for (var rowIndex = 2; rowIndex <= 4; rowIndex++)
+                    {
+                        System.Console.WriteLine($"{workSheet.Cells[rowIndex, columnIndex].Value}");
+                    }
+                }
             }
 
             return Task.Delay(3);
