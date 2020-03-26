@@ -22,14 +22,14 @@ namespace AfterServiceHelper
             _logger = logger;
             _configuration = configuration;
             _parser = new ShippedDetailExcelParser(_configuration.GetValue<string>("ExcelPath"));
-            _dataAccess = new ShippedDetailDataAccess();
+            _dataAccess = new ShippedDetailDataAccess(configuration);
 
             _interval = _configuration.GetValue<int>("CycleHour");
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("ShippedDetail Timed Hosted Service running.");
+            _logger.LogInformation("===================Running=====================");
 
             _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromHours(_interval));
 
@@ -51,7 +51,7 @@ namespace AfterServiceHelper
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("ShippedDetail Timed Hosted Service is stopping.");
+            _logger.LogInformation("===================Stopping=====================");
 
             _timer?.Change(Timeout.Infinite, 0);
 
