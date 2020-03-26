@@ -21,7 +21,7 @@ namespace AfterServiceHelper
         {
             _logger = logger;
             _configuration = configuration;
-            _parser = new ShippedDetailExcelParser(@"./document/Bugzilla issue20200217.xlsx");
+            _parser = new ShippedDetailExcelParser(_configuration.GetValue<string>("ExcelPath"));
             _dataAccess = new ShippedDetailDataAccess();
 
             _interval = _configuration.GetValue<int>("CycleHour");
