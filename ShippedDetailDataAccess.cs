@@ -29,14 +29,8 @@ namespace AfterServiceHelper
                 {
                     try
                     {
-                        var deleteQuery = "DELETE FROM ShippedDeatils";
-                        connection.Execute(deleteQuery, transaction: transaction);
-
-                        var insertQuery = "INSERT INTO ShippedDeatils VALUES " +
-                            "(@ProductType, @RobotSn, @ControlBox, @StickSn, @CustomerCode, @ShippedCustmer, @ShippedWeek, " +
-                            "@ShippedDate, @Destination, @HmiVersion, @PowerBoard, @DriverFW, @IoVersion, @RtxSn, @ShippedMonth, @ShippedYear, @Remark, @Hw, @HwService, @Country, @Region, @CustomerType)";
-                        connection.Execute(insertQuery, data, transaction: transaction);
-
+                        DeleteAll(connection, transaction);
+                        InsertList(data, connection, transaction);
                         transaction.Commit();
                     }
                     catch (Exception ex)
@@ -47,5 +41,20 @@ namespace AfterServiceHelper
                 }
             }
         }
+
+        private static void InsertList(List<ShippedDetail> data, SqlConnection connection, SqlTransaction transaction)
+        {
+            var insertQuery = "INSERT INTO ShippedDeatils VALUES " +
+                                        "(@ProductType, @RobotSn, @ControlBox, @StickSn, @CustomerCode, @ShippedCustmer, @ShippedWeek, " +
+                                        "@ShippedDate, @Destination, @HmiVersion, @PowerBoard, @DriverFW, @IoVersion, @RtxSn, @ShippedMonth, @ShippedYear, @Remark, @Hw, @HwService, @Country, @Region, @CustomerType)";
+            connection.Execute(insertQuery, data, transaction: transaction);
+        }
+
+        private void DeleteAll(SqlConnection connection, SqlTransaction transaction)
+        {
+            var deleteQuery = "DELETE FROM ShippedDeatils";
+            connection.Execute(deleteQuery, transaction: transaction);
+        }
+
     }
 }
