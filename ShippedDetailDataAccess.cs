@@ -20,28 +20,22 @@ namespace AfterServiceHelper
         public void Save(List<ShippedDetail> data)
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(_configuration.GetConnectionString("DefaultConnection"));
-            // {
-            //     DataSource = "192.168.134.54",
-            //     UserID = "sa",
-            //     Password = "p@ssw0rd",
-            //     InitialCatalog = "AfterService",
-            // };
 
-            using(SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
             {
                 connection.Open();
 
-                using(SqlTransaction transaction = connection.BeginTransaction())
+                using (SqlTransaction transaction = connection.BeginTransaction())
                 {
                     try
                     {
                         var deleteQuery = "DELETE FROM ShippedDeatils";
-                        connection.Execute(deleteQuery);
+                        connection.Execute(deleteQuery, transaction: transaction);
 
                         var insertQuery = "INSERT INTO ShippedDeatils VALUES " +
                             "(@ProductType, @RobotSn, @ControlBox, @StickSn, @CustomerCode, @ShippedCustmer, @ShippedWeek, " +
                             "@ShippedDate, @Destination, @HmiVersion, @PowerBoard, @DriverFW, @IoVersion, @RtxSn, @ShippedMonth, @ShippedYear, @Remark, @Hw, @HwService, @Country, @Region, @CustomerType)";
-                        connection.Execute(insertQuery, data);
+                        connection.Execute(insertQuery, data, transaction: transaction);
 
                         transaction.Commit();
                     }

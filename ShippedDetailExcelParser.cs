@@ -51,9 +51,9 @@ namespace AfterServiceHelper
                         CustomerType = workSheet.Cells[rowIndex, 22].Text
                     });
                 }
-            }
 
-            return details;
+                return details;
+            }
         }
     }
 }

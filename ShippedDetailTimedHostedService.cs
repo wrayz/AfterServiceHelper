@@ -39,14 +39,18 @@ namespace AfterServiceHelper
         private void DoWork(object state)
         {
             _logger.LogInformation($"{DateTime.Now} Parsing process");
+            try
+            {
+                var data = _parser.Parsing();
+                _logger.LogInformation($"{DateTime.Now} Saving into database");
 
-            var data = _parser.Parsing();
-
-            _logger.LogInformation($"{DateTime.Now} Saving into database");
-
-            _dataAccess.Save(data);
-
-            _logger.LogInformation($"{DateTime.Now} Save Finished");
+                _dataAccess.Save(data);
+                _logger.LogInformation($"{DateTime.Now} Save Finished");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex.Message);
+            }
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -62,6 +66,5 @@ namespace AfterServiceHelper
         {
             _timer?.Dispose();
         }
-
     }
 }
